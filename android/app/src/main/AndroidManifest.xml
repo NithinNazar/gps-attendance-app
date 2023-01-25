@@ -1,12 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.task1">
+    package="com.example.flutter_location_practice">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
-        android:label="task1"
+        android:label="flutter_location_practice"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
