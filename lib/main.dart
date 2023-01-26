@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:camera/camera.dart';
+import 'package:task1/camera_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -137,7 +138,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text('Mark Attendance')),
                   ElevatedButton(
                       onPressed: () async {
-                        // code to take selfie
+                        await availableCameras().then((value) => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => CameraPage(cameras: value))));
                       },
                       child: Text('Take Selfie')),
                 ],
