@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Task 1'),
       ),
       body: Center(
-        child: Column(
+        child: _selectedIndex == 0 ? Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text('Get Location'))
           ],
-        ),
+        ): _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
