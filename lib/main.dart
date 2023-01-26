@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> GetAddressFromLatLong(Position position) async {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    
+
     print(placemarks);
     Placemark place = placemarks[0];
     Address =
@@ -96,41 +96,53 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Task 1'),
       ),
       body: Center(
-        child: _selectedIndex == 0 ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Coordinates Points',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              location,
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'ADDRESS',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text('${Address}'),
-            ElevatedButton(
-                onPressed: () async {
-                  Position position = await _determinePosition();
-                  location =
-                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                  GetAddressFromLatLong(position);
-                },
-                child: Text('Get Location'))
-          ],
-        ): _widgetOptions.elementAt(_selectedIndex),
+        child: _selectedIndex == 0
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Coordinates Points',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    location,
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'ADDRESS',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('${Address}'),
+                  ElevatedButton(
+                      onPressed: () async {
+                        Position position = await _determinePosition();
+                        location =
+                            'Lat: ${position.latitude} , Long: ${position.longitude}';
+                        GetAddressFromLatLong(position);
+                      },
+                      child: Text('Get Location')),
+                  ElevatedButton(
+                      onPressed: () async {
+                        // code to mark attendance
+                      },
+                      child: Text('Mark Attendance')),
+                  ElevatedButton(
+                      onPressed: () async {
+                        // code to take selfie
+                      },
+                      child: Text('Take Selfie')),
+                ],
+              )
+            : _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
